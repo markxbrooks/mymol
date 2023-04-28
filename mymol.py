@@ -1,9 +1,11 @@
 #!/bin/env python
+# run with @filename from pymol command line
 from pathlib import Path
 homedir = Path.home()
 reinitialize
 cd homedir + os.sep + "Desktop"
 prot="1zy7"
+chain = A
 print(prot)
 #fetch 1dw1
 cmd.fetch(prot,name=prot)
@@ -11,7 +13,8 @@ cmd.fetch(prot,name=prot)
 select visible
 #load 1dw1.map.ccp4
 cmd.fetch(prot,type="2fofc")
-
+objname = f{"{prot}-{A}"}
+select(f"{prot} chain {A}, {objname}")
 #isomesh map, 1dw1.map, 3.0, sele, carve=1.6
 cmd.isomesh("%s_map"%prot, "%s_2fofc"%prot, 3.0, "sele", carve=1.6)
 
