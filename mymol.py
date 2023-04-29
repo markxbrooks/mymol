@@ -13,10 +13,12 @@ cmd.fetch(prot,name=prot)
 select visible
 #load 1dw1.map.ccp4
 cmd.fetch(prot,type="2fofc")
-objname = f{"{prot}-{A}"}
-select(f"{prot} chain {A}, {objname}")
+objname = f"{prot}-A"
+cmd.select(objname, "chain A")
+cmd.hide("everything")
+cmd.show("cartoon", objname)
 #isomesh map, 1dw1.map, 3.0, sele, carve=1.6
-cmd.isomesh("%s_map"%prot, "%s_2fofc"%prot, 3.0, "sele", carve=1.6)
+cmd.isomesh("%s_map"%prot, "%s_2fofc"%prot, 3.0, objname, carve=1.6)
 
 #color br2, map
 cmd.color("br2", "%s_map"%prot)
